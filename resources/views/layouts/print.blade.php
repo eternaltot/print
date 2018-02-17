@@ -18,6 +18,11 @@
             bottom: 30px;
             right: 30px;
         }
+        .fixbuttonleft{
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+        }
     </style>
 </head>
 <body>
@@ -26,6 +31,15 @@
         @yield('content')
 
         <div class="bottom-fix">
+        <div class="fixbuttonleft">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{ url('choose/') }}">
+                    <button class="btn btn-lg btn-primary">EDIT</button>
+                </a>
+            </div>
+        </div>
+        </div>
         <div class="fixedbutton">
             <div class="row">
                 <div class="col-md-6">
@@ -44,6 +58,7 @@
         
         </div>
     </div>
+    
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>

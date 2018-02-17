@@ -32,8 +32,12 @@ Route::get('/picture/ig/{tag}',function($tag){
 });
 
 Route::get('/picture/folder/',function(){
-	return view('folder',array('tag'=>'กะทิชาวเกาะ'));
+	return view('folder');
 });
+
+Route::get('/choose/',function(){
+	return view('choose');
+})->name('chooseframe');
 
 Route::get('/resize',"PictureController@resizeAll");
 
@@ -47,3 +51,8 @@ Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('home');
 
+Route::get('upload', function () {
+    return view('upload');
+});
+
+Route::post('upload', 'UploadController@upload');

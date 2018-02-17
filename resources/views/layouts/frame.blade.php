@@ -22,20 +22,6 @@
 </head>
 <body>
     <div id="app">
-        <header>
-            <div class="container">
-                <div class="col-md-12" style="text-align: center;padding: 20px;">
-                <?php
-                    if(Session::has('tag'))
-                        $tag = Session::get('tag');
-                    Session::flash('tag', $tag);
-                ?>
-                    <button type="button" onclick="location.href='{{url('picture/all/').'/'.$tag}}'" class="btn btn-primary btn-lg">All</button>
-                    <button type="button" onclick="location.href='{{url('picture/ig/').'/'.$tag}}'" class="btn btn-primary btn-lg">Instagram</button>
-                    <button type="button" onclick="location.href='{{url('picture/folder')}}'" class="btn btn-primary btn-lg">Computer</button>
-                </div>
-            </div>
-        </header>
         {{ Form::open(array('url' => 'print')) }}
         @yield('content')
         <div class="bottom-fix">
@@ -51,6 +37,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.6.0/lazyload.min.js"></script>
     <script type="text/javascript">
         function checkEvent(checkbox,img){
+            $('input:checkbox').prop('checked',false);
+            $(".img-thumbnail").css({"border" : "1px solid #ddd"});
             var chk = document.getElementById(checkbox);
             if(chk.checked == false){
                 chk.checked = true;
@@ -63,6 +51,8 @@
             }
         }
         function isCheck(checkbox,img){
+            $('input:checkbox').prop('checked',false);
+            $(".img-thumbnail").css({"border" : "1px solid #ddd"});
             var chk = document.getElementById(checkbox);
             if(chk.checked == false){
                 $("#"+img).css({"border" : "1px solid #ddd"});
