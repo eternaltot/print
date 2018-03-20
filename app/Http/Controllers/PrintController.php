@@ -159,6 +159,6 @@ class PrintController extends Controller
       $command = "java -jar ".public_path('java/'."printer.jar")." ".$value." ".$num;
       shell_exec($command);
     }
-    return redirect("/picture/all/".$tag);
+    return redirect("/picture/all/");
   }
 }

@@ -34,11 +34,12 @@
                 }
                 // Image::make(public_path('images/' . $filename))->fit(300, 300)->save(public_path('images/crop/' . $filename));
                 $img = Image::make(public_path('images/ig/' . $filename));
+                $frame = App\Frame::orderBy('id','DESC')->first();
                 if(isset($frame)){
-                  $frame_name_array = explode('-',$frame);
-                  $frame_name = $frame_name_array[0];
+                  // $frame_name_array = explode('-',$frame);
+                  $frame_name = $frame->name;
                 }else{
-                  $frame_name = "frame";
+                  // $frame_name = "frame";
                 }
                 $frame_file_name = $frame_name."-horizontal.png";
                 if($img->width()<$img->height()){
@@ -65,9 +66,10 @@
                 $filename = basename($path);
                 $img = Image::make(public_path('images/' . $filename));
                 // $img = Image::make($choose_img);
+                $frame = App\Frame::orderBy('id','DESC')->first();
                 if(isset($frame)){
-                  $frame_name_array = explode('-',$frame);
-                  $frame_name = $frame_name_array[0];
+                  // $frame_name_array = explode('-',$frame);
+                  $frame_name = $frame->name;
                 }else{
                   $frame_name = "frame";
                 }
