@@ -62,6 +62,10 @@ return [
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+        'frames' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/images/frame',
+        ],
 
     ],
 

@@ -12,10 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/picture/all/',function(){
+
+
+Route::get('/picture/all',function(){
 	return view('picture',array('tag'=>'กะทิชาวเกาะ'));
 });
 
@@ -45,7 +47,9 @@ Route::get('/print',"PrintController@index");
 
 Route::get('/print/image',"PrintController@printImage")->name("printimage");
 
-Route::post('/print',"PrintController@showImage");
+Route::post('/print',"PrintController@showImage")->name("print");
+Route::post('/confirm',"ConfirmController@showImage")->name("confirm");
+
 
 Auth::routes();
 
@@ -56,3 +60,16 @@ Route::get('upload', function () {
 });
 
 Route::post('upload', 'UploadController@upload');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('admin', 'Admin\AdminController@index');
+Route::resource('admin/roles', 'Admin\RolesController');
+Route::resource('admin/permissions', 'Admin\PermissionsController');
+Route::resource('admin/users', 'Admin\UsersController');
+Route::resource('admin/tags', 'Admin\TagsController');
+Route::resource('admin/frames', 'Admin\FramesController');
+Route::get('admin/tags/backup/{id}',['uses' =>'Admin\TagsController@backup'])->name('backup');
+Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
+Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);

@@ -16,7 +16,7 @@
         .fixedbutton {
             position: fixed;
             bottom: 30px;
-            right: 30px; 
+            right: 30px;
         }
     </style>
 </head>
@@ -26,9 +26,17 @@
             <div class="container">
                 <div class="col-md-12" style="text-align: center;padding: 20px;">
                 <?php
+                  $tags = App\Tag::orderBy('id','DESC')->first();
+                  if(!isset($tags)){
+                    $tags = new App\Tag;
+                    $tags->tag = 'กะทิชาวเกาะ';
+                  }
+                  $tag = $tags->tag;
+                ?>
+                <?php
                     if(Session::has('tag'))
                         $tag = Session::get('tag');
-                    Session::flash('tag', $tag);
+                    Session::flash('tag', $tags->tag);
                 ?>
                     <button type="button" onclick="location.href='{{url('picture/all/').'/'.$tag}}'" class="btn btn-primary btn-lg">All</button>
                     <button type="button" onclick="location.href='{{url('picture/ig/').'/'.$tag}}'" class="btn btn-primary btn-lg">Instagram</button>
@@ -36,13 +44,14 @@
                 </div>
             </div>
         </header>
-        {{ Form::open(array('url' => 'print')) }}
+        {{ Form::open(array('url' => 'confirm')) }}
+
         @yield('content')
         <div class="bottom-fix">
-            <button type="submit" class="fixedbutton btn btn-lg btn-primary">NEXT</button>
+            <button type="submit" id="btnsubmit" class="fixedbutton btn btn-lg btn-primary">NEXT</button>
         </div>
         {{ Form::close() }}
-        
+
     </div>
 
     <!-- Scripts -->
@@ -72,6 +81,13 @@
                 }
             }
         }
+        $(document).on('click', 'form button[type=submit]', function(e) {
+              var length = $('.checkbox:checkbox:checked').length;
+              if(length == 0){
+                alert("กรุณาเลือกรูปภาพ");
+                e.preventDefault();
+              }
+          });
     </script>
 </body>
 </html>

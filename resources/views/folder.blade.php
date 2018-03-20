@@ -20,7 +20,7 @@
                             ?>
                             <div class="col-md-4" style="margin-bottom:10px; ">
                                 <div class="form-check">
-                                      <input id="check-{{$i}}" onchange="isCheck('check-{{$i}}','img-{{$i}}');" type="checkbox" name="choose[]" value="{{$file_info->getFilename()}}" class="form-check-input">
+                                      <input id="check-{{$i}}" class="checkbox" onchange="isCheck('check-{{$i}}','img-{{$i}}');" type="checkbox" name="choose[]" value="{{$file_info->getFilename()}}" class="form-check-input">
                                       <a href="javascript:checkEvent('check-{{$i}}','img-{{$i}}');">
                                       <img id="img-{{$i}}" class="img-thumbnail" src="{{asset('images').'/'.$file_info->getFilename()}}" />
                                       </a>

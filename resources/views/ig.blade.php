@@ -19,7 +19,7 @@
                         ?>
                         <div class="col-md-4" style="margin-bottom:10px; ">
                             <div class="form-check">
-                                <input id="check-{{$i}}" onchange="isCheck('check-{{$i}}','img-{{$i}}');" type="checkbox" name="choose[]" value="{{$value->node->display_url}}" class="form-check-input">
+                                <input id="check-{{$i}}" class="checkbox" onchange="isCheck('check-{{$i}}','img-{{$i}}');" type="checkbox" name="choose[]" value="{{$value->node->display_url}}" class="form-check-input">
                                 <a href="javascript:checkEvent('check-{{$i}}','img-{{$i}}');">
                                 <img id="img-{{$i}}" class="img-thumbnail" src="{{$value->node->display_url}}" />
                                 </a>
@@ -31,7 +31,7 @@
                                 if(!$json->graphql->hashtag->edge_hashtag_to_media->page_info->has_next_page) break;
                                 $url = $base_url.'&max_id='.$json->graphql->hashtag->edge_hashtag_to_media->page_info->end_cursor;
                                 // $i--;
-                                
+
                             }
                         ?>
                         @endif

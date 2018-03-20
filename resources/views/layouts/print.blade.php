@@ -45,7 +45,12 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="num">จำนวน</label>
-                        <input id="num" name="num" onclick="changeLink()" type="number" class="form-control" value="1"></input>
+                        <select name="num" id="num">
+                           <option value="1" selected>1</option>
+                           @for( $i = 2;$i<=20;$i++)
+                           <option value="{{$i}}">{{$i}}</option>
+                           @endfor
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -55,26 +60,29 @@
                 </div>
             </div>
         </div>
-        
+
         </div>
     </div>
-    
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.6.0/lazyload.min.js"></script>
     <script type="text/javascript">
-        
+
         function changeLink(){
             var href = $("#link").attr("data-href");
-            href = href+"&num="+$("#num").val();
+            href = href+"&num="+$('select[name=num]').val();
 			$("#link").attr("href",href);
         }
 		$(function(){
             changeLink();
+            $("#num").on('change',function(){
+              changeLink();
+            });
         });
-        
+
     </script>
 </body>
 </html>

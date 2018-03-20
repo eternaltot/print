@@ -156,10 +156,8 @@ class PrintController extends Controller
     print_r($num);
     foreach ($array_img as $value) {
       $filename = basename($value);
-      for($i =0 ; $i< $num;$i++){
-        $command = "java -jar ".public_path('java/'."printer.jar")." ".$value;
-        shell_exec($command);
-      }
+      $command = "java -jar ".public_path('java/'."printer.jar")." ".$value." ".$num;
+      shell_exec($command);
     }
     return redirect("/picture/all/".$tag);
   }

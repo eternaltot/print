@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                        @if($tag)
+                        @if(isset($tag))
                         <?php
                             $all_img = array();
                             $base_url = 'https://www.instagram.com/explore/tags/'.urlencode($tag).'/?__a=1';
@@ -33,7 +33,7 @@
                             }
                         ?>
                         @endif
-            
+
                         <?php
                         $directory = public_path("images/");
                         $files = File::files($directory);
@@ -48,7 +48,7 @@
                         ?>
                         <div class="col-md-3" style="margin-bottom:10px; ">
                                 <div class="form-check">
-                                      <input id="check-{{$i}}" type="checkbox" onchange="isCheck('check-{{$i}}','img-{{$i}}');"  name="choose[]" value="{{$value}}" class="form-check-input">
+                                      <input id="check-{{$i}}" type="checkbox" class="checkbox" onchange="isCheck('check-{{$i}}','img-{{$i}}');"  name="choose[]" value="{{$value}}" class="form-check-input">
                                       <a href="javascript:checkEvent('check-{{$i}}','img-{{$i}}');">
                                       <img id="img-{{$i}}" class="img-thumbnail" src="{{$value}}" />
                                       </a>

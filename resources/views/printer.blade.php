@@ -52,8 +52,9 @@
                 $canvas->insert($frame_img,"center")->save(public_path('images/print/'.$filename),100);
                 array_push($array_img, public_path('images\\print\\'.$filename));
                 ?>
-                <div class="col-md-4" style="margin-bottom:10px; "> 
-                  <img class="img-thumbnail" src="{{ asset('images').'/print/'.$filename }}" /> 
+                <div class="col-md-4" style="margin-bottom:10px; ">
+                  <!-- <img class="img-thumbnail" src="{{ asset('images').'/print/'.$filename }}" /> -->
+                  <img class="img-thumbnail" src="{{ asset('images').'/print/'.$filename }}" />
                 </div>
                 <?php
               }else{
@@ -81,8 +82,8 @@
                 $canvas->insert($frame_img,"center")->save(public_path('images/print/'.$filename),100);
                 array_push($array_img, public_path('images\\print\\'.$filename));
                 ?>
-                <div class="col-md-4" style="margin-bottom:10px; "> 
-                  <img class="img-thumbnail" src="{{asset('images').'/print/'.$filename}}" /> 
+                <div class="col-md-4" style="margin-bottom:10px; ">
+                  <img class="img-thumbnail" src="{{asset('images').'/print/'.$filename}}" />
                 </div>
                 <?php
               }
