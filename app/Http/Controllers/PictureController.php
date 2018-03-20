@@ -29,6 +29,6 @@ class PictureController extends Controller
               }
             }
         }
-        return redirect("/picture/all/กะทิชาวเกาะ");
+        return redirect("/picture/all");
     }
 }

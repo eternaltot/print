@@ -31,12 +31,12 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID.</th> <th>Frame</th>
+                                        <th>ID.</th> <th>Frame</th><th>Pic</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{ $frame->id }}</td> <td> {{ $frame->frame }} </td>
+                                        <td>{{ $frame->id }}</td> <td> {{ $frame->name }} </td><td><img width="100" src="{{asset('images/frame/')."/".$frame->horizontal}}"/></td>
                                     </tr>
                                 </tbody>
                             </table>

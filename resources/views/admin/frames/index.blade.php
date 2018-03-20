@@ -30,14 +30,15 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Frame</th>
+                                        <th>ID</th><th>Frame</th><th>Pic</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($frames as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td><a href="{{ url('/admin/frames', $item->id) }}">{{ $item->frame }}</a></td>
+                                        <td><a href="{{ url('/admin/frames', $item->id) }}">{{ $item->name }}</a></td>
+                                        <td><img width="100" src="{{asset('images/frame/')."/".$item->horizontal}}" /></td>
                                         <td>
                                             <a href="{{ url('/admin/frames/' . $item->id . '/edit') }}" title="Edit Frame"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([

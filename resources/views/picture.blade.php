@@ -5,34 +5,33 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                        @if(isset($tag))
                         <?php
-                            $all_img = array();
+                          $all_img = array();
+                          $i = 1;
+                          $tags = App\Tag::orderBy('id','DESC')->first();
+                          if(!isset($tags)){
+                            $tags = new App\Tag;
+                            $tags->tag = 'กะทิชาวเกาะ';
+                          }
+                          $tag = $tags->tag;
+                        ?>
+
+                        <?php
                             $base_url = 'https://www.instagram.com/explore/tags/'.urlencode($tag).'/?__a=1';
                             $url = $base_url;
-                            $count = 2;
-                            $i = 1;
+                            $count = 1;
                             while($count > 0) {
                                 $json = json_decode(file_get_contents($url,true));
                                 foreach ($json->graphql->hashtag->edge_hashtag_to_media->edges as $value) {
                         ?>
-                        <!-- <div class="col-md-3" style="margin-bottom:10px; ">
-                            <div class="form-check">
-                                <input id="check-{{$i}}" onchange="isCheck('check-{{$i}}','img-{{$i}}');" type="checkbox" name="choose[]" value="{{$value->node->display_url}}"  class="form-check-input">
-                                <a href="javascript:checkEvent('check-{{$i}}','img-{{$i}}');">
-                                <img id="img-{{$i}}" class="img-thumbnail" src="{{$value->node->display_url}}" />
-                                </a>
-                            </div>
-                        </div> -->
                                 <?php
-                                array_push($all_img,$value->node->display_url);
+                                    array_push($all_img,$value->node->display_url);
                                 }
                                 if(!$json->graphql->hashtag->edge_hashtag_to_media->page_info->has_next_page) break;
                                 $url = $base_url.'&max_id='.$json->graphql->hashtag->edge_hashtag_to_media->page_info->end_cursor;
-                                $count--;
+
                             }
                         ?>
-                        @endif
 
                         <?php
                         $directory = public_path("images/");

@@ -7,8 +7,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                    @if($tag)
                         <?php
+                            $tags = App\Tag::orderBy('id','DESC')->first();
+                            if(!isset($tags)){
+                              $tags = new App\Tag;
+                              $tags->tag = 'กะทิชาวเกาะ';
+                            }
+                            $tag = $tags->tag;
                             $i=1;
                             $base_url = 'https://www.instagram.com/explore/tags/'.urlencode($tag).'/?__a=1';
                             $url = $base_url;
@@ -34,7 +39,6 @@
 
                             }
                         ?>
-                        @endif
                     </div>
                 </div>
             </div>

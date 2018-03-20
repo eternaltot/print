@@ -26,20 +26,20 @@
             <div class="container">
                 <div class="col-md-12" style="text-align: center;padding: 20px;">
                 <?php
-                  $tags = App\Tag::orderBy('id','DESC')->first();
-                  if(!isset($tags)){
-                    $tags = new App\Tag;
-                    $tags->tag = 'กะทิชาวเกาะ';
-                  }
-                  $tag = $tags->tag;
+                  // $tags = App\Tag::orderBy('id','DESC')->first();
+                  // if(!isset($tags)){
+                  //   $tags = new App\Tag;
+                  //   $tags->tag = 'กะทิชาวเกาะ';
+                  // }
+                  // $tag = $tags->tag;
                 ?>
                 <?php
-                    if(Session::has('tag'))
-                        $tag = Session::get('tag');
-                    Session::flash('tag', $tags->tag);
+                    // if(Session::has('tag'))
+                    //     $tag = Session::get('tag');
+                    // Session::flash('tag', $tags->tag);
                 ?>
-                    <button type="button" onclick="location.href='{{url('picture/all/').'/'.$tag}}'" class="btn btn-primary btn-lg">All</button>
-                    <button type="button" onclick="location.href='{{url('picture/ig/').'/'.$tag}}'" class="btn btn-primary btn-lg">Instagram</button>
+                    <button type="button" onclick="location.href='{{url('picture/all/')}}'" class="btn btn-primary btn-lg">All</button>
+                    <button type="button" onclick="location.href='{{url('picture/ig/')}}'" class="btn btn-primary btn-lg">Instagram</button>
                     <button type="button" onclick="location.href='{{url('picture/folder')}}'" class="btn btn-primary btn-lg">Computer</button>
                 </div>
             </div>

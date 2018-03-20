@@ -51,10 +51,10 @@ class FramesController extends Controller
         //
         $this->validate($request, ['name' => 'required','horizontal'=>'required','vertical'=>'required']);
         $data = $request->all();
-        $request->file("horizontal")->storeAs('images',$data["name"]."-horizontal.png",'frames');
-        $request->file("vertical")->storeAs('images',$data["name"]."-vertical.png",'frames');
-        $data['horizontal'] = $data->name."-horizontal.png";
-        $data['vertical'] = $data->name."-vertical.png";
+        $request->file("horizontal")->move(public_path('images'.'/frame/'),$data["name"]."-horizontal.png");
+        $request->file("vertical")->move(public_path('images'.'/frame/'),$data["name"]."-vertical.png");
+        $data['horizontal'] = $data['name']."-horizontal.png";
+        $data['vertical'] = $data['name']."-vertical.png";
         $frame = Frame::create($data);
         // foreach ($request->roles as $role) {
         //     $user->assignRole($role);
@@ -69,7 +69,7 @@ class FramesController extends Controller
      * @param  \App\Frame  $frame
      * @return \Illuminate\Http\Response
      */
-    public function show(Frame $frame)
+    public function show($id)
     {
         //
         $frame = Frame::findOrFail($id);
@@ -83,7 +83,7 @@ class FramesController extends Controller
      * @param  \App\Frame  $frame
      * @return \Illuminate\Http\Response
      */
-    public function edit(Frame $frame)
+    public function edit($id)
     {
         //
         $frame = Frame::select('id', 'name')->findOrFail($id);
@@ -113,8 +113,12 @@ class FramesController extends Controller
      * @param  \App\Frame  $frame
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Frame $frame)
+    public function destroy($id)
     {
+        $frame = Frame::findOrFail($id);
+        $path = public_path('images/frame/');
+        unlink($path.$frame->horizontal);
+        unlink($path.$frame->vertical);
         //
         Frame::destroy($id);
 

@@ -64,7 +64,7 @@ return [
         ],
         'frames' => [
             'driver' => 'local',
-            'root'   => public_path() . '/images/frame',
+            'root'   => public_path('images'),
         ],
 
     ],

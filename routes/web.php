@@ -18,20 +18,20 @@ Route::get('/', function () {
 
 
 Route::get('/picture/all',function(){
-	return view('picture',array('tag'=>'กะทิชาวเกาะ'));
+	return view('picture');
 });
-
-Route::get('/picture/all/{tag}',function($tag){
-	return view('picture',array('tag'=>$tag));
-})->name('picture');
+//
+// Route::get('/picture/all/{tag}',function($tag){
+// 	return view('picture',array('tag'=>$tag));
+// })->name('picture');
 
 Route::get('/picture/ig/',function(){
-	return view('ig',array('tag'=>'กะทิชาวเกาะ'));
+	return view('ig');
 });
 
-Route::get('/picture/ig/{tag}',function($tag){
-	return view('ig',array('tag'=>$tag));
-});
+// Route::get('/picture/ig/{tag}',function($tag){
+// 	return view('ig',array('tag'=>$tag));
+// });
 
 Route::get('/picture/folder/',function(){
 	return view('folder');
@@ -41,7 +41,7 @@ Route::get('/choose/',function(){
 	return view('choose');
 })->name('chooseframe');
 
-Route::get('/resize',"PictureController@resizeAll");
+// Route::get('/resize',"PictureController@resizeAll");
 
 Route::get('/print',"PrintController@index");
 
