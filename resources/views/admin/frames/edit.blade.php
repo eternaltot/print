@@ -24,14 +24,13 @@
                         {!! Form::model($frame, [
                             'method' => 'PATCH',
                             'url' => ['/admin/frames', $frame->id],
-                            'class' => 'form-horizontal'
+                            'class' => 'form-horizontal',
+                            'files' => true,
                         ]) !!}
 
                         @include ('admin.frames.form', ['submitButtonText' => 'Update'])
 
                         {!! Form::close() !!}
-                        <a href="{{ url('/admin/frames/backup/'.$frame->id) }}" title="Backup"><button class="btn btn-info"><i class="fa fa-arrow-up" aria-hidden="true"></i> Backup</button></a>
-
 
                     </div>
                 </div>

@@ -86,7 +86,7 @@ class FramesController extends Controller
     public function edit($id)
     {
         //
-        $frame = Frame::select('id', 'name')->findOrFail($id);
+        $frame = Frame::select('id', 'name','use','default')->findOrFail($id);
         return view('admin.frames.edit', compact('frame'));
     }
 
@@ -97,12 +97,38 @@ class FramesController extends Controller
      * @param  \App\Frame  $frame
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Frame $frame)
+    public function update(Request $request, $id)
     {
         //
-        $this->validate($request, ['name' => 'required','horizontal' => 'required', 'vertical' => 'required']);
+        $this->validate($request, ['name' => 'required']);
         $frame = Frame::findOrFail($id);
-        $frame->update($request->all());
+        $data = array();
+        $data = $request->all();
+        if($request->horizontal <> null && $request->vertical <> null){
+          $request->file("horizontal")->move(public_path('images'.'/frame/'),$data["name"]."-horizontal.png");
+          $data['horizontal'] = $data['name']."-horizontal.png";
+          $request->file("vertical")->move(public_path('images'.'/frame/'),$data["name"]."-vertical.png");
+          $data['vertical'] = $data['name']."-vertical.png";
+          $data['use'] = $request->use <> 1 ? 0:1;
+          $data['default'] = $request->default <> 1 ? 0:1;
+        }elseif ($request->horizontal <> null && $request->vertical == null) {
+          $data['name'] = $request->name;
+          $request->file("horizontal")->move(public_path('images'.'/frame/'),$data["name"]."-horizontal.png");
+          $data['horizontal'] = $data['name']."-horizontal.png";
+          $data['use'] = $request->use <> 1 ? 0:1;
+          $data['default'] = $request->default <> 1 ? 0:1;
+        }elseif ($request->horizontal == null && $request->vertical <> null) {
+          $data['name'] = $request->name;
+          $request->file("vertical")->move(public_path('images'.'/frame/'),$data["name"]."-vertical.png");
+          $data['vertical'] = $data['name']."-vertical.png";
+          $data['use'] = $request->use <> 1 ? 0:1;
+          $data['default'] = $request->default <> 1 ? 0:1;
+        }else{
+          $data['name'] = $request->name;
+          $data['use'] = $request->use <> 1 ? 0:1;
+          $data['default'] = $request->default <> 1 ? 0:1;
+        }
+        $frame->update($data);
 
         return redirect('admin/frames')->with('flash_message', 'Frame updated!');
     }

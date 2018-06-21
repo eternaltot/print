@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('picture');
-});
+// Route::get('/', function () {
+//     return view('picture');
+// });
 
+Route::get('/',"PictureController@index");
+Route::get('/picture/all',"PictureController@index");
 
-
-Route::get('/picture/all',function(){
-	return view('picture');
-});
+// Route::get('/picture/all',function(){
+// 	return view('picture');
+// });
 //
 // Route::get('/picture/all/{tag}',function($tag){
 // 	return view('picture',array('tag'=>$tag));

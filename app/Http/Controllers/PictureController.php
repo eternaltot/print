@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use File;
 use Image;
+use Mbarwick83\Instagram\Instagram;
 
 class PictureController extends Controller
 {
@@ -14,21 +15,26 @@ class PictureController extends Controller
         return view('picture');
     }
 
-    public function resizeAll(){
-    	set_time_limit(600);
-    	$directory = public_path("images/");
-        $files = File::files($directory);
-        foreach ($files as $file) {
-            $file_info = new \SplFileInfo($file);
-            if($file_info->getSize()>3000000){
-              $img = Image::make(public_path('images/' . $file_info->getFilename()));
-              if($img->width()>$img->height()){
-                $img->->resize(3900,2786)->save(public_path('images/' . $file_info->getFilename()));
-              }else{
-                $img->->resize(2786,3900)->save(public_path('images/' . $file_info->getFilename()));
-              }
-            }
-        }
-        return redirect("/picture/all");
-    }
+
+
+    // // Get login url:
+    // function index(Instagram $instagram)
+    // {
+    // 	return $instagram->getLoginUrl();
+    // 	// or Instagram::getLoginUrl();
+    // }
+    //
+    // // Get access token on callback, once user has authorized via above method
+    // function callback(Request $request, Instagram $instagram)
+    // {
+    // 	$response = $instagram->getAccessToken($request->code);
+    // 	// or $response = Instagram::getAccessToken($request->code);
+    //
+    //     if (isset($response['code']) == 400)
+    //     {
+    //         throw new \Exception($response['error_message'], 400);
+    //     }
+    //
+    //     return $response['access_token'];
+    // }
 }

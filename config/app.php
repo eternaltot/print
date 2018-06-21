@@ -180,6 +180,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Appzcoder\LaravelAdmin\LaravelAdminServiceProvider::class,
         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
+        willvincent\Feeds\FeedsServiceProvider::class,
+        // Mbarwick83\Instagram\InstagramServiceProvider::class,
 
     ],
 
@@ -232,6 +234,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Feeds' => willvincent\Feeds\Facades\FeedsFacade::class,
+        // 'Instagram' => Mbarwick83\Instagram\Facades\Instagram::class,
 
     ],
 

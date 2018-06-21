@@ -30,7 +30,7 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Frame</th><th>Pic</th>
+                                        <th>ID</th><th>Frame</th><th>Pic</th><th>Use</th><th>Default</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,6 +39,20 @@
                                         <td>{{ $item->id }}</td>
                                         <td><a href="{{ url('/admin/frames', $item->id) }}">{{ $item->name }}</a></td>
                                         <td><img width="100" src="{{asset('images/frame/')."/".$item->horizontal}}" /></td>
+                                        <td>
+                                          @if($item->use)
+                                          <div style="font-size:3em; color:Tomato"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
+                                          @else
+                                          <div style="font-size:3em;"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
+                                          @endif
+                                        </td>
+                                        <td>
+                                          @if($item->default)
+                                          <div style="font-size:3em; color:Tomato"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
+                                          @else
+                                          <div style="font-size:3em;"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
+                                          @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('/admin/frames/' . $item->id . '/edit') }}" title="Edit Frame"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([

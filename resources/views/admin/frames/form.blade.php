@@ -19,7 +19,30 @@
         {!! $errors->first('vertical', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-
+<div class="form-group{{ $errors->has('use') ? ' has-error' : ''}}">
+    {!! Form::label('use', 'Use: ', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+      @if(isset($frame))
+        {!! Form::checkbox('use',1,$frame->use,['class' => 'form-control']) !!}
+        {!! $errors->first('use', '<p class="help-block">:message</p>') !!}
+      @else
+        {!! Form::checkbox('use',1,false,['class' => 'form-control']) !!}
+        {!! $errors->first('use', '<p class="help-block">:message</p>') !!}
+      @endif
+    </div>
+</div>
+<div class="form-group{{ $errors->has('default') ? ' has-error' : ''}}">
+    {!! Form::label('default', 'Default: ', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+      @if(isset($frame))
+        {!! Form::checkbox('default',1,$frame->default,['class' => 'form-control']) !!}
+        {!! $errors->first('default', '<p class="help-block">:message</p>') !!}
+      @else
+        {!! Form::checkbox('default',1,false,['class' => 'form-control']) !!}
+        {!! $errors->first('default', '<p class="help-block">:message</p>') !!}
+      @endif
+    </div>
+</div>
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">

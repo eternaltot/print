@@ -87,8 +87,8 @@ class PrintController extends Controller
 
   public function showImage(Request $request){
     $choose = $request->get("choose");
-    if($request->has('frame')){
-      return view("printer")->with(array("frame"=>$request->get('frame')));
+    if($request->has('frames')){
+      return view("printer")->with(array("frames"=>$request->get('frames'),"choose"=>$choose));
     }else{
       return view("printer")->with(array("choose"=>$choose));
     }
