@@ -73,6 +73,11 @@
 <body>
   <div id="app" style="overflow-x:hidden;">
     <header>
+      <div class="logo">
+        <a href="{{url('picture/all/')}}" target="_self">
+          <img src="{{ asset('assets/logo_tcc_1.png')}}" width="70"/>
+        </a>
+      </div>
       <div class="button-right">
         <div class="row">
           <div class="col" style="">

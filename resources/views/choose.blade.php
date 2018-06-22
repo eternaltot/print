@@ -9,8 +9,8 @@
       Session::flash('choose',$choose);
     }
     $directory = public_path("images/");
-    if(!File::exists($directory."print/")) {
-      File::makeDirectory($directory."print/", $mode = 0777, true, true);
+    if(!File::exists($directory."temp/")) {
+      File::makeDirectory($directory."temp/", $mode = 0777, true, true);
     }
     $count_choose = count($choose);
     $show_width = 200;
@@ -61,17 +61,18 @@
           $frame_file_name = $frame_name."-vertical.png";
         }
 
-        $frame_img = Image::make(public_path('images/frame/'.$frame_file_name))->resize(($img->width()),($img->height()));
+        // $frame_img = Image::make(public_path('images/frame/'.$frame_file_name))->resize(($img->width()),($img->height()));
         $canvas = Image::canvas(($img->width()),($img->height()));
         // // $frame->insert($img,"center")->save(public_path('images/print/'.$filename));
-        $canvas->insert($img,"center")->save(public_path('images/print/'.$filename),100);
-        // $canvas->insert($frame_img,"center")->save(public_path('images/print/'.$filename),100);
+        // $canvas->insert($img,"center");
+        $canvas->insert($img,"center")->save(public_path('images/temp/'.$filename),100);
+        // $canvas->insert($frame_img,"center")->save(public_path('images/temp/'.$filename),100);
         array_push($array_img, public_path('images\\print\\'.$filename));
         ?>
         <!-- <div class="col-md-4" style="margin-bottom:10px; "> -->
         <!-- <img class="img-thumbnail" src="{{ asset('images').'/print/'.$filename }}" /> -->
         <div class="image1">
-          <img class="preview" width="<?php echo $show_width;?>" src="{{ asset('images').'/print/'.$filename }}" />
+          <img class="preview" width="<?php echo $show_width;?>" src="{{ asset('images').'/temp/'.$filename }}" />
           <img class="frame" data-align="{{ $data_align }}" width="<?php echo $show_width;?>" src="{{ asset('images/frame/'.$frame_file_name)}}"/>
         </div>
         <!-- </div> -->
@@ -99,10 +100,10 @@
           $data_align = "vertical";
           $frame_file_name = $frame_name."-vertical.png";
         }
-        $frame_img = Image::make(public_path('images/frame/'.$frame_file_name))->resize(($img->width()),($img->height()));
+        // $frame_img = Image::make(public_path('images/frame/'.$frame_file_name))->resize(($img->width()),($img->height()));
         $canvas = Image::canvas(($img->width()),($img->height()));
         // // $frame->insert($img,"center")->save(public_path('images/print/'.$choose_img));
-        $canvas->insert($img,"center")->save(public_path('images/print/'.$filename),100);
+        $canvas->insert($img,"center")->save(public_path('images/temp/'.$filename),100);
         // $canvas->insert($frame_img,"center")->save(public_path('images/print/'.$filename),100);
         array_push($array_img, public_path('images\\print\\'.$filename));
 
@@ -110,7 +111,7 @@
         <!-- <div class="col-md-4" style="margin-bottom:10px; "> -->
         <div class="image1">
 
-          <img class="img-thumbnail preview" width="<?php echo $show_width;?>" src="{{asset('images').'/print/'.$filename}}" />
+          <img class="img-thumbnail preview" width="<?php echo $show_width;?>" src="{{asset('images').'/temp/'.$filename}}" />
           <img class="frame" data-align="{{$data_align}}" width="<?php echo $show_width;?>" src="{{ asset('images/frame/'.$frame_file_name)}}"/>
         </div>
         <?php

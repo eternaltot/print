@@ -51,7 +51,13 @@
 <body>
     <div id="app">
         <header>
+          <div class="logo">
+            <a href="{{url('picture/all/')}}" target="_self">
+              <img src="{{ asset('assets/logo_tcc_1.png')}}" width="70"/>
+            </a>
+          </div>
             <div class="container">
+
                 <div class="col-md-12" style="text-align: center;padding: 20px;">
                 <?php
                   // $tags = App\Tag::orderBy('id','DESC')->first();

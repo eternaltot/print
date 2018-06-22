@@ -159,6 +159,7 @@ class PrintController extends Controller
       $command = "java -jar ".public_path('java/'."printer.jar")." ".$value." ".$num;
       shell_exec($command);
     }
+    File::deleteDirectory(public_path('images/temp'));
     return redirect("/picture/all/");
   }
 }

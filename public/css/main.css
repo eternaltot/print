@@ -1,7 +1,15 @@
 body{
   background-color: #2c2b27;
 }
-
+.logo{
+  position: absolute;
+  top:30px;
+  left: 30px;
+}
+.logo a{
+  width: 70px;
+  height: 41px;
+}
 .btn-circle {
   text-align: center;
   padding: 6px 0;

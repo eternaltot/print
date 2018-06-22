@@ -18,6 +18,7 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <style type="text/css">
         .container{
+          width: 960px;
           padding-top: 10px;
         }
         .fixedbutton {
@@ -69,6 +70,11 @@
     </style>
 </head>
 <body>
+  <div class="logo">
+    <a href="{{url('picture/all/')}}" target="_self">
+      <img src="{{ asset('assets/logo_tcc_1.png')}}" width="70"/>
+    </a>
+  </div>
     <div id="app">
         {{ Form::open(array('url' => 'print')) }}
         @yield('content')
@@ -124,6 +130,9 @@
             adaptiveHeight: true
           });
           $("#img-<?php echo $check; ?>").trigger('click');
+          $(".button-back").on('click',function(){
+            window.history.back();
+          });
         });
     </script>
 </body>
