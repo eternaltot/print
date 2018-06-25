@@ -46,6 +46,34 @@
         .choosed-active{
           opacity: 1;
         }
+        .btn-inactive{
+          background-color: black;
+        }
+        .bottom-align{
+          bottom: 0;
+        }
+        .loader {
+          border: 16px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 16px solid #3498db;
+          width: 240px;
+          height: 240px;
+          -webkit-animation: spin 2s linear infinite; /* Safari */
+          animation: spin 2s linear infinite;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -72,9 +100,9 @@
                     //     $tag = Session::get('tag');
                     // Session::flash('tag', $tags->tag);
                 ?>
-                    <button type="button" onclick="location.href='{{url('picture/all/')}}'" class="btn btn-primary btn-circle btn-lg"><i class="fas fa-3x fa-th"></i></button>
-                    <button type="button" onclick="location.href='{{url('picture/ig/')}}'" class="btn btn-primary btn-circle btn-lg"><i class="fab fa-3x fa-instagram"></i></button>
-                    <button type="button" onclick="location.href='{{url('picture/folder')}}'" class="btn btn-primary btn-circle btn-lg"><i class="fas fa-3x fa-laptop"></i></button>
+                    <button type="button" onclick="location.href='{{url('picture/all/')}}'" class="btn btn-primary btn-circle btn-lg <?php echo Request::path() == 'picture/all' || Request::path() == "/" ? "" : "btn-inactive"; ?>" ><i class="fas fa-3x fa-th"></i></button>
+                    <button type="button" onclick="location.href='{{url('picture/ig/')}}'" class="btn btn-primary btn-circle btn-lg <?php echo Request::path() == 'picture/ig' ? "" : "btn-inactive"; ?>" style="margin-left:60px;"><i class="fab fa-3x fa-instagram"></i></button>
+                    <button type="button" onclick="location.href='{{url('picture/folder')}}'" class="btn btn-primary btn-circle btn-lg <?php echo Request::path() == 'picture/folder' ? "" : "btn-inactive"; ?>" style="margin-left:60px;"><i class="fas fa-3x fa-laptop"></i></button>
                 </div>
             </div>
         </header>
@@ -95,6 +123,20 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <h1>กรุณาเลือกรูปภาพ</h1>
+            </div>
+          </div>
+        </div>
+        <button type="button" id="btnloading" style="display:none;" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">
+          Launch demo modal
+        </button>
+        <div id="modalLoading" class="modal" role="dialog" tabindex="-1">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content"  style="text-align:center;">
+              <div>
+                <h3 style="color:white;">กรุณารอสักครู่</h3>
+              </div>
+              <div class="loader">
+              </div>
             </div>
           </div>
         </div>
@@ -142,27 +184,29 @@
         $(document).ready(function(){
           $('.multiple-items-ig').slick({
             infinite: false,
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesPerRow: 4,
+            // slidesToScroll: 4,
             lazyLoad: 'ondemand',
             arrows:true,
             dots:true,
             centerPadding:"10px",
+            adaptiveHeight: true,
           });
           $('.multiple-items-folder').slick({
             infinite: false,
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesPerRow: 4,
+            // slidesToScroll: 4,
             lazyLoad: 'ondemand',
             arrows:true,
             dots:true,
             centerPadding:"10px",
+            adaptiveHeight: true,
           });
           $('.multiple-items-ig-page').slick({
             infinite: false,
             rows:2,
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesPerRow: 4,
+            // slidesToScroll: 4,
             lazyLoad: 'ondemand',
             arrows:true,
             dots:true,
@@ -171,11 +215,18 @@
           $('.multiple-items-folder-page').slick({
             infinite: false,
             rows:2,
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesPerRow: 4,
+            // slidesToScroll: 4,
             lazyLoad: 'ondemand',
             arrows:true,
+            dots:true,
             centerPadding:"10px",
+          });
+          $(".btn-circle").click(function(){
+            $('#btnloading').click();
+          });
+          $(".logo").click(function(){
+            $('#btnloading').click();
           });
         });
     </script>

@@ -64,7 +64,7 @@
                                 <div class="form-check">
                                       <input id="check-{{$i}}" type="checkbox" data-choosed="choosed-{{$i}}" data-img="img-{{$i}}" class="checkbox" onchange="isCheck('check-{{$i}}','img-{{$i}}');"  name="choose[]" value="{{$value->node->display_url}}" class="form-check-input">
                                       <a href="javascript:checkEvent('check-{{$i}}','img-{{$i}}','choosed-{{$i}}');">
-                                      <img id="img-{{$i}}" class="img-thumbnail" width="250" src="{{$value->node->display_url}}" />
+                                      <img id="img-{{$i}}" class="img-thumbnail bottom-align" width="250" src="{{$value->node->display_url}}" />
                                       <img id="choosed-{{$i}}" class="choosed" src="{{ asset('assets/choose_icon.png')}}" />
                                       </a>
 

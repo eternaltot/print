@@ -78,12 +78,11 @@
           <img src="{{ asset('assets/logo_tcc_1.png')}}" width="70"/>
         </a>
       </div>
-      <div class="button-right">
+      <div class="button-right" style="margin-top:20px;margin-right:30px;">
         <div class="row">
           <div class="col" style="">
             <div class="form-group">
-              <label for="num">จำนวน</label>
-              <select name="num" id="num" style="height:40px;width:60px;">
+              <select name="num" id="num" style="height:65px;width:80px;font-size:22px;margin-right:20px;">
                 <option value="1" selected>1</option>
                 @for( $i = 2;$i<=20;$i++)
                 <option value="{{$i}}">{{$i}}</option>

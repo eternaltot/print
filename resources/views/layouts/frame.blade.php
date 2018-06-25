@@ -19,7 +19,7 @@
     <style type="text/css">
         .container{
           width: 960px;
-          padding-top: 10px;
+          padding-top: 10%;
         }
         .fixedbutton {
             position: absolute;
@@ -45,7 +45,7 @@
         }
         .choose_frame{
           position: fixed;
-          bottom: 0px;
+          bottom: 20px;
           margin-left: 5%;
           margin-right: 10%;
         }
