@@ -238,13 +238,13 @@
   });
   function ig_bullet(){
     var count_bullet = $(".multiple-items-ig .slick-dots>li").length;
-    var i;
+
     var n = 32;
     var btnID;
     var pos = 1;
 
     $('p#igTxt').text(pos+" / "+count_bullet);
-    for(i=count_bullet;i>=n;i--){
+    for(var i=count_bullet;i>=n;i--){
       $("li#slick-slide-control0"+i).hide();
     }
 
@@ -254,14 +254,24 @@
       if(count_bullet > n){
         var j = count_bullet / n+1;
         for(var k = 1;k<=j;k++){
-        if(btnID == "slick-slide-control0"+(k*n)){
-          for(i=0;i<(k*n);i++){
-            $("#slick-slide-control0"+i).hide();
+          if(btnID == "slick-slide-control0"+(k*n)){
+            for(var i=0;i<(k*n);i++){
+              $("#slick-slide-control0"+i).hide();
+            }
+            for(var i=(k*n);i<(k+1)*n;i++){
+              $("#slick-slide-control0"+i).show();
+            }
+          }else if(btnID == "slick-slide-control0"+((k*n)-1)){
+            for(var i=0;i<((k-1)*n);i++){
+              $("#slick-slide-control0"+i).hide();
+            }
+            for(var i=((k-1)*n);i<(k)*n;i++){
+              $("#slick-slide-control0"+i).show();
+            }
+            for(var i=k*n;i<(k+1)*n;i++){
+              $("#slick-slide-control0"+i).hide();
+            }
           }
-          for(i=(k*n);i<(k+1)*n;i++){
-            $("#slick-slide-control0"+i).show();
-          }
-        }
         }
       }
       pos = parseInt(btnID.substring(20))+1;
@@ -277,13 +287,13 @@
   }
   function folder_bullet(){
     var count_bullet = $(".multiple-items-folder .slick-dots>li").length;
-    var i;
+
     var n = 32;
     var btnID;
     var pos = 1;
 
     $('p#folderTxt').text(pos+" / "+count_bullet);
-    for(i=count_bullet;i>=n;i--){
+    for(var i=count_bullet;i>=n;i--){
       $("li#slick-slide-control1"+i).hide();
     }
 
@@ -293,14 +303,24 @@
       if(count_bullet > n){
         var j = count_bullet / n+1;
         for(var k = 1;k<=j;k++){
-        if(btnID == "slick-slide-control1"+(k*n)){
-          for(i=0;i<(k*n);i++){
-            $("#slick-slide-control1"+i).hide();
+          if(btnID == "slick-slide-control1"+(k*n)){
+            for(var i=0;i<(k*n);i++){
+              $("#slick-slide-control1"+i).hide();
+            }
+            for(var i=(k*n);i<(k+1)*n;i++){
+              $("#slick-slide-control1"+i).show();
+            }
+          }else if(btnID == "slick-slide-control1"+((k*n)-1)){
+            for(var i=0;i<((k-1)*n);i++){
+              $("#slick-slide-control1"+i).hide();
+            }
+            for(var i=((k-1)*n);i<(k)*n;i++){
+              $("#slick-slide-control1"+i).show();
+            }
+            for(var i=k*n;i<(k+1)*n;i++){
+              $("#slick-slide-control1"+i).hide();
+            }
           }
-          for(i=(k*n);i<(k+1)*n;i++){
-            $("#slick-slide-control1"+i).show();
-          }
-        }
         }
       }
       pos = parseInt(btnID.substring(20))+1;
@@ -333,14 +353,24 @@
       if(count_bullet > n){
         var j = count_bullet / n+1;
         for(var k = 1;k<=j;k++){
-        if(btnID == "slick-slide-control0"+(k*n)){
-          for(i=0;i<(k*n);i++){
-            $("#slick-slide-control0"+i).hide();
+          if(btnID == "slick-slide-control0"+(k*n)){
+            for(var i=0;i<(k*n);i++){
+              $("#slick-slide-control0"+i).hide();
+            }
+            for(var i=(k*n);i<(k+1)*n;i++){
+              $("#slick-slide-control0"+i).show();
+            }
+          }else if(btnID == "slick-slide-control0"+((k*n)-1)){
+            for(var i=0;i<((k-1)*n);i++){
+              $("#slick-slide-control0"+i).hide();
+            }
+            for(var i=((k-1)*n);i<(k)*n;i++){
+              $("#slick-slide-control0"+i).show();
+            }
+            for(var i=k*n;i<(k+1)*n;i++){
+              $("#slick-slide-control0"+i).hide();
+            }
           }
-          for(i=(k*n);i<(k+1)*n;i++){
-            $("#slick-slide-control0"+i).show();
-          }
-        }
         }
       }
       pos = parseInt(btnID.substring(20))+1;
@@ -372,14 +402,24 @@
       if(count_bullet > n){
         var j = count_bullet / n+1;
         for(var k = 1;k<=j;k++){
-        if(btnID == "slick-slide-control0"+(k*n)){
-          for(i=0;i<(k*n);i++){
-            $("#slick-slide-control0"+i).hide();
+          if(btnID == "slick-slide-control0"+(k*n)){
+            for(var i=0;i<(k*n);i++){
+              $("#slick-slide-control0"+i).hide();
+            }
+            for(var i=(k*n);i<(k+1)*n;i++){
+              $("#slick-slide-control0"+i).show();
+            }
+          }else if(btnID == "slick-slide-control0"+((k*n)-1)){
+            for(var i=0;i<((k-1)*n);i++){
+              $("#slick-slide-control0"+i).hide();
+            }
+            for(var i=((k-1)*n);i<(k)*n;i++){
+              $("#slick-slide-control0"+i).show();
+            }
+            for(var i=k*n;i<(k+1)*n;i++){
+              $("#slick-slide-control0"+i).hide();
+            }
           }
-          for(i=(k*n);i<(k+1)*n;i++){
-            $("#slick-slide-control0"+i).show();
-          }
-        }
         }
       }
       pos = parseInt(btnID.substring(20))+1;
