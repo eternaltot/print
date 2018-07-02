@@ -11,7 +11,7 @@
     if(Session::has('choose'))
     $choose = Session::get("choose");
     Session::flash('choose',$choose);
-    $directory = public_path("images/");
+    $directory = asset("images/");
     if(!File::exists($directory."print/")) {
       File::makeDirectory($directory."print/", $mode = 0777, true, true);
     }
@@ -67,7 +67,7 @@
         // // $frame->insert($img,"center")->save(public_path('images/print/'.$filename));
         $canvas->insert($img,"center");
         $canvas->insert($frame_img,"center")->save(public_path('images/print/'.$filename),100);
-        array_push($array_img, public_path('images\\print\\'.$filename));
+        array_push($array_img, public_path('images/print/'.$filename));
         ?>
         <!-- <div class="col-md-4" style="margin-bottom:10px; "> -->
         <!-- <img class="img-thumbnail" src="{{ asset('images').'/print/'.$filename }}" /> -->
@@ -102,7 +102,7 @@
         // // $frame->insert($img,"center")->save(public_path('images/print/'.$choose_img));
         $canvas->insert($img,"center");
         $canvas->insert($frame_img,"center")->save(public_path('images/print/'.$filename),100);
-        array_push($array_img, public_path('images\\print\\'.$filename));
+        array_push($array_img, public_path('images/print/'.$filename));
         ?>
         <!-- <div class="col-md-4" style="margin-bottom:10px; "> -->
         <div class="">

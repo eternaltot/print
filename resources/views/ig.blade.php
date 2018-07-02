@@ -82,6 +82,7 @@
                           }
                         ?>
                         </div>
+                        <p id="igTxt" style="right: -45px;margin-top: -30px;position: absolute;color: white;"> 0 / 0</p>
                     <!-- </div>
                 </div>
             </div>

@@ -85,6 +85,7 @@
                           }
                         ?>
                       </div>
+                      <p id="igTxt" style="right: -45px;margin-top: -30px;position: absolute;color: white;"> 0 / 0</p>
                         <div class="multiple-items-folder" style="padding-top:20px;">
                         <?php
                         function getPhotos($dir)
@@ -128,6 +129,7 @@
                         // foreach ($all_img as $value) {
                         ?>
                       </div>
+                      <p id="folderTxt" style="right: -45px;margin-top: -30px;position: absolute;color: white;"> 0 / 0</p>
                         <!-- <div class="col-md-3" style="margin-bottom:10px; ">
                                 <div class="form-check">
                                       <input id="check-{{--$i--}}" type="checkbox" class="checkbox" onchange="isCheck('check-{{--$i--}}','img-{{--$i--}}');"  name="choose[]" value="{{--$value--}}" class="form-check-input">

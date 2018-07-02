@@ -36,7 +36,6 @@ body{
 
 .slick-dots li button::before{
   font-size: 15px;
-  color: white;
 }
 
 .modal-content{
@@ -67,4 +66,10 @@ input[type=checkbox]{
 }
 .slick-prev{
   left:-50px;
+}
+.slick-dots li.slick-active button:before{
+  color: #A1A1A1;
+}
+.slick-dots li button:hover:before, .slick-dots li button:focus:before{
+  color: #A1A1A1;
 }
